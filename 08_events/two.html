@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur Code</h1>
+    <button id="stop">Stop</button>
+    
+</body>
+<script>
+
+    // 1. setTimeout()
+    setTimeout(function(){
+        console.log("Milind");
+    },2000)
+
+
+    const sayMIlind = function(){
+        console.log("Milind");
+    }
+    setTimeout(sayMIlind, 2000)
+
+    const changeText = function(){
+        document.querySelector('h1')
+        innerHTML = "best JS series";
+    }
+    setTimeout(changeText, 2000)
+
+    // clearTimeout()
+    const changeMe = setTimeout(changeText, 2000)
+    
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTImeout(changeMe)
+        console.log("STOPPED");
+    })
+
+
+    // 2. setInterval
+
+    setInterval(function(){
+        console.log("Milind", Date.now())
+    }, 1000)
+
+
+    const sayDate = function(){
+        console.log("Milind", Date.now())
+
+    }
+    setInterval(sayDate, 1000, "hi");
+
+
+    // ClearInterval
+    const intervalId = setInterval(sayDate, 1000, "hi")
+    
+    clearInterval(intervalId)
+</script>
+</html>

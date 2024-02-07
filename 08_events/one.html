@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>html Events</title>
 </head>
-<body>
+<body style="background-color: #414141; color: aliceblue;">
     <h2>Amazing image</h2>
     <div>
         <ul id="images">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
             <li><a style="color:aliceblue;" href="https://google.com" id="google">Google</a></li>
         </ul>
     </div>
@@ -23,14 +25,14 @@
         alert("owl clicked")
     }
 
-    // best approach
+    //************** best approach *****************
     document.getElementById('owl').addEventListener('click', function(){
         alert("owl clicked again")
     } ) 
     // false --> third parameter bydefault is false
 
-    //attachEvent()
-    // jQuery - on
+    //attachEvent() --> early js used
+    // jQuery - on EventListner
 
     document.getElementById('owl').addEventListener('click', function(e){
         console.log(e)
@@ -48,7 +50,9 @@
     // **********************************************************************
     // Event Propogation ---> 2 context
     // 1. Event Bubbling --> bottom to up approach
-    // 2. Event Capturing --> replace false to true 
+    // 2. Event Capturing --> replace false to true
+    
+    
     document.getElementById('images').addEventListener('click', function(e){
         console.log("clicked inside the ul")
     }, false)
@@ -64,13 +68,15 @@
 
 
 
-    document.querySelector('#images').addEventListener('click', function(){
+    document.querySelector('#images').addEventListener('click', function(e){
         console.log(e.target.parentNode);
-
+        if(e.target.tagName === 'IMG'){
+            console.log(e.target.id);
         // remove
-        let removeIt = e.target.parentNoderemove
-        removeIt.remove();
-
+            let removeIt = e.target.parentNode
+            removeIt.remove();
+        }
+        // Another Method to remove
         // removeIt.parentNode.removeChild(removeIt)
 
     })
